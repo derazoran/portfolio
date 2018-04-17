@@ -3,8 +3,11 @@
   <h1 class="coming-soon-title">Coming soon...</h1>
 
   <h2>search meanwhile for some Metallica lyrics caus' im a big Metallica fan as you can see on my Logo:</h2>
-  <input title="search" [(ngModel)]="term" type="text" />
-  <button class="btn btn-primary" (click)="onSearch()">Search</button>
+
+  <mat-form-field>
+    <input title="search" [(ngModel)]="term" type="text" matInput placeholder="Search">
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="onSearch()">Search</button>
 
   <div [innerHtml]="lyrics">
   </div>

@@ -1,1 +1,10 @@
-<app-coming-soon></app-coming-soon>
+<mat-toolbar class="portfolio-toolbar">
+  <span></span>
+  <!-- This fills the remaining space of the current row -->
+  <span class="fill-remaining-space"></span>
+  <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+  <a routerLink="/cv" routerLinkActive="active">CV</a>
+  <a routerLink="/metallica" routerLinkActive="active">Metallica</a>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
-  selector: 'app-coming-soon',
-  templateUrl: './coming-soon.component.html',
-  styleUrls: ['./coming-soon.component.css']
+  selector: 'app-metallica-song-search',
+  templateUrl: './metallica-song-search.component.html',
+  styleUrls: ['./metallica-song-search.component.scss']
 })
-export class ComingSoonComponent implements OnInit {
+export class MetallicaSongSearchComponent implements OnInit {
+
   term = '';
   http;
   lyrics = '';
@@ -50,4 +51,5 @@ export class ComingSoonComponent implements OnInit {
         }
       )
   }
+
 }
