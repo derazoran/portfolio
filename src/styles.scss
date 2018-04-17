@@ -32,9 +32,14 @@ body{
   margin: 0;
 }
 
+.portfolio-flex{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
 
 .portfolio-toolbar{
-  position: fixed;
+  flex: 0 0 65px;
   background-color: #333;
 
   a, a:visited, a:focus{
@@ -47,8 +52,27 @@ body{
   }
 }
 
+.portfolio-content{
+  flex: 1 1 100%;
+  overflow: auto;
+}
+
 .app-container{
-  background-color: #333;
-  min-height: 100vh;
+  position: relative;
+  height: 100%;
   color: #b19a54;
+  background-color: #333;
+}
+
+.loader{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #333;
+  z-index: 999;
 }

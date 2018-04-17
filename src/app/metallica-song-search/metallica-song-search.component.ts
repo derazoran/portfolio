@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {MatTableDataSource} from '@angular/material';
 
 @Component({
   selector: 'app-metallica-song-search',
@@ -8,9 +9,12 @@ import {HttpClient} from "@angular/common/http";
 })
 export class MetallicaSongSearchComponent implements OnInit {
 
-  term = '';
+  displayedColumns = ['name'];
+  dataSource: any = []
+  loader = true;
   http;
   lyrics = '';
+  list = [];
 
   constructor(http: HttpClient) {
 
@@ -18,11 +22,38 @@ export class MetallicaSongSearchComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.http.get('http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=Metallica&limit=151&api_key=26f758c2642831ad3da7ed22461ff3aa&format=json')
+      .subscribe(
+        (response) => {
+          let songArray = response.toptracks.track;
+
+          songArray.forEach( (element) => {
+            this.list.push({name: element.name});
+          });
+
+          this.dataSource = new MatTableDataSource(this.list);
+          //this.lyrics = response.lyrics.replace(/(\r\n|\n|\r)/g, "<br />");
+          this.loader = false;
+        },
+        (error) => {
+          this.list = error.statusText;
+        }
+      )
+
   }
 
-  onSearch() {
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
+  }
 
-    this.http.get('https://api.lyrics.ovh/v1/Metallica/' + this.term)
+  onSearch(event: any) {
+
+    console.log(event);
+
+    this.http.get('https://api.lyrics.ovh/v1/Metallica/' + event.target.innerHTML)
       .subscribe(
         (response) => {
           this.lyrics = response.lyrics.replace(/(\r\n|\n|\r)/g, "<br />");
@@ -36,20 +67,7 @@ export class MetallicaSongSearchComponent implements OnInit {
   }
 
   getTopTracksFromMetallica() {
-    this.http.get('http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=Metallica&api_key=26f758c2642831ad3da7ed22461ff3aa&format=json')
-      .subscribe(
-        (response) => {
-          let songArray = response.toptracks.track;
 
-          songArray.forEach( (element) => {
-            this.lyrics += element.name+'<br />';
-          });
-          //this.lyrics = response.lyrics.replace(/(\r\n|\n|\r)/g, "<br />");
-        },
-        (error) => {
-          this.lyrics = error.statusText;
-        }
-      )
   }
 
 }

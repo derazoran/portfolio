@@ -1,14 +1,42 @@
 <div class="app-container">
 
-  <div class="row">
+  <app-loader [hidden]="!loader"></app-loader>
+
+  <div class="search-container row mx-0">
     <div class="col-sm-4">
-      <mat-form-field>
+      <!-- <div><mat-form-field>
         <input title="search" [(ngModel)]="term" type="text" matInput placeholder="Search">
       </mat-form-field>
-      <button mat-raised-button color="primary" (click)="onSearch()">Search</button>
+      </div>
+      <div >
+        <ul>
+          <li (click)="onSearch($event)" *ngFor="let song of list;">{{ song }}</li>
+        </ul>
+      </div>-->
+
+      <div class="search-header">
+        <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+      </div>
+
+
+      <mat-table class="search-result" #table [dataSource]="dataSource">
+
+        <!-- Position Column -->
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+          <mat-cell *matCellDef="let element" (click)="onSearch($event)"> {{element.name}} </mat-cell>
+        </ng-container>
+
+        <mat-row *matRowDef="let row; columns: displayedColumns;" class="song-list"></mat-row>
+      </mat-table>
+
     </div>
 
-    <div class="col-sm-8">
+    <div class="col-sm-8 lyric-content">
       <div [innerHtml]="lyrics"></div>
     </div>
   </div>

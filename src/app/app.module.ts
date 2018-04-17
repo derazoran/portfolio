@@ -46,6 +46,7 @@ import {
 import { HomeComponent } from './home/home.component';
 import { CvComponent } from './cv/cv.component';
 import { MetallicaSongSearchComponent } from './metallica-song-search/metallica-song-search.component';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { MetallicaSongSearchComponent } from './metallica-song-search/metallica-
     ComingSoonComponent,
     HomeComponent,
     CvComponent,
-    MetallicaSongSearchComponent
+    MetallicaSongSearchComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +66,9 @@ import { MetallicaSongSearchComponent } from './metallica-song-search/metallica-
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatTableModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
