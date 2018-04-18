@@ -17,6 +17,7 @@
   overflow: auto; }
 
 .lyric-content {
-  overflow: auto; }
+  overflow: auto;
+  position: relative; }
 
 /*# sourceMappingURL=metallica-song-search.component.css.map */

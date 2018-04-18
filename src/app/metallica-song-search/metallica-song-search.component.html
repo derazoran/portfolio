@@ -20,8 +20,8 @@
         </mat-form-field>
       </div>
 
-
-      <mat-table class="search-result" #table [dataSource]="dataSource">
+      <perfect-scrollbar>
+         <mat-table class="search-result" #table [dataSource]="dataSource">
 
         <!-- Position Column -->
 
@@ -33,12 +33,17 @@
 
         <mat-row *matRowDef="let row; columns: displayedColumns;" class="song-list"></mat-row>
       </mat-table>
-
+      </perfect-scrollbar>
     </div>
 
-    <div class="col-sm-8 lyric-content">
-      <div [innerHtml]="lyrics"></div>
-    </div>
+
+      <div class="col-sm-8 lyric-content">
+        <app-loader [hidden]="!lyricLoader"></app-loader>
+        <perfect-scrollbar>
+        <div [innerHtml]="lyrics"></div>
+        </perfect-scrollbar>
+      </div>
+
   </div>
 
 </div>

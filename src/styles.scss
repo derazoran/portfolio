@@ -4,6 +4,47 @@
 @import '../node_modules/@angular/material/theming';
 // Plus imports for other components in your app.
 
+// custom color theme
+
+$dark-primary-text-custom: rgba(black, 0.87);
+$light-primary-text-custom: white;
+
+$mat-gold: (
+  50: #b19a54,
+  100: #b19a54,
+  200: #b19a54,
+  300: #b19a54,
+  400: #b19a54,
+  500: #b19a54,
+  600: #b19a54,
+  700: #b19a54,
+  800: #b19a54,
+  900: #b19a54,
+  A100: #b19a54,
+  A200: #b19a54,
+  A400: #b19a54,
+  A700: #b19a54,
+  contrast: (
+    50: $dark-primary-text-custom,
+    100: $dark-primary-text-custom,
+    200: $dark-primary-text-custom,
+    300: $dark-primary-text-custom,
+    400: $dark-primary-text-custom,
+    500: $light-primary-text-custom,
+    600: $light-primary-text-custom,
+    700: $light-primary-text-custom,
+    800: $light-primary-text-custom,
+    900: $light-primary-text-custom,
+    A100: $dark-primary-text-custom,
+    A200: $light-primary-text-custom,
+    A400: $light-primary-text-custom,
+    A700: $light-primary-text-custom,
+  )
+);
+
+
+
+
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
@@ -13,8 +54,8 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://www.google.com/design/spec/style/color.html
-$candy-app-primary: mat-palette($mat-lime);
-$candy-app-accent:  mat-palette($mat-lime, A200, A100, A400);
+$candy-app-primary: mat-palette($mat-gold);
+$candy-app-accent:  mat-palette($mat-gold, A200, A100, A400);
 
 
 // The warn palette is optional (defaults to red).
